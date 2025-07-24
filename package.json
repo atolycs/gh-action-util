@@ -6,5 +6,17 @@
   },
   "author": "",
   "license": "MIT",
-  "description": ""
+  "description": "",
+  "workspaces": [
+    "create-gha-token"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "esbuild": "^0.25.8",
+    "typescript": "^5.8.3"
+  }
 }

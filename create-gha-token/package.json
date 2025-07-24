@@ -1,0 +1,20 @@
+{
+  "name": "create-gha-token",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "format": "biome format --fix .",
+    "pack:all": "$npm_exec run pack:main && $npm_exec run pack:post",
+    "pack:main": "esbuild --target=node22.0.0 --platform=node --bundle --outdir=dist src/main.ts",
+    "pack:post": "esbuild --target=node22.0.0 --platform=node --bundle --outdir=dist src/post.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@atolycs/biome-config": "^0.2.0",
+    "husky": "^9.1.7"
+  }
+}
