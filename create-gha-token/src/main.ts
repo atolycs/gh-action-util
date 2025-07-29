@@ -44,6 +44,7 @@ const main = async () => {
   });
 
   const installations = await resultInstallation.json();
+  debug(installations);
   const installation = installations[0];
 
   const bot_commit_sign = {

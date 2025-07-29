@@ -23672,6 +23672,7 @@ var main = async () => {
     }
   });
   const installations = await resultInstallation.json();
+  (0, import_core.debug)(installations);
   const installation = installations[0];
   const bot_commit_sign = {
     name: installation.app_slug,
