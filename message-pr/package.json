@@ -1,0 +1,21 @@
+{
+  "name": "message-pr",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "prepare": "husky",
+    "format": "biome format --fix .",
+    "pack": "$npm_execpath run format && esbuild --target=node22 --platform=node --bundle --outdir=dist src/main.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@atolycs/biome-config": "^0.2.0",
+    "husky": "^9.1.7"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1"
+  }
+}
