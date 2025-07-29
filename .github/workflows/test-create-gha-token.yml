@@ -1,0 +1,25 @@
+name: Test create-gha-token action
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  auth:
+    name: GitHub App Auth Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Run
+        uses: atolycs/gh-action-util/create-gha-token@main
+        id: generate-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PEM }}
+
+      - name: Authentication Test
+        env: 
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          gh auth status
+          gh api /octocat
+
