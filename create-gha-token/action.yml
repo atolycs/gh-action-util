@@ -1,0 +1,30 @@
+name: Create GitHub App Installation Token
+description: Generate Temporary Token
+
+author: Atolycs
+
+branding:
+  icon: log-in
+  color: green
+
+inputs:
+  app-id:
+    description: GitHub App ID
+    required: true
+  private-key:
+    description: GitHub App Private Key
+    required: true
+
+outputs:
+  token: 
+    description: GitHub App Installation Token
+  commit-user:
+    description: GitHub App Commit User
+  commit-email:
+    description: GitHub App Commit Email
+
+
+runs:
+  using: node22
+  main: dist/main.js
+  post: dist/post.js
