@@ -23656,7 +23656,7 @@ var main = async () => {
     // Expire 10 min in the feature
     iss: GITHUB_CLIENT_ID
   };
-  const access_repositories = JSON.Stringify({
+  const access_repositories = JSON.stringify({
     repositories: [`${repositories}`]
   });
   const resultJWT = jwt.sign(payload, GITHUB_PRIVATE_KEY, {

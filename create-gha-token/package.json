@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
     "format": "biome format --fix .",
-    "pack": "esbuild --target=node22 --platform=node --bundle --outdir=dist src/main.ts src/post.ts"
+    "pack": "$npm_execpath run format && esbuild --target=node22 --platform=node --bundle --outdir=dist src/main.ts src/post.ts"
   },
   "author": "",
   "license": "MIT",

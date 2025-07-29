@@ -25,7 +25,7 @@ const main = async () => {
     iss: GITHUB_CLIENT_ID,
   };
 
-  const access_repositories = JSON.Stringify({
+  const access_repositories = JSON.stringify({
     repositories: [`${repositories}`],
   });
 
