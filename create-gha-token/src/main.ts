@@ -68,7 +68,7 @@ const main = async () => {
     throw new Error("Failed to get access token");
   }
 
-  info("==>: Setting the outputs...");
+  info("==> Setting the outputs...");
   setSecret(accessToken.token);
   setOutput("token", accessToken.token);
   setOutput("app_slug", installation.app_slug);

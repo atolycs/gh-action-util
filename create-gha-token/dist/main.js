@@ -23691,7 +23691,7 @@ var main = async () => {
   if (!accessToken) {
     throw new Error("Failed to get access token");
   }
-  (0, import_core.info)("==>: Setting the outputs...");
+  (0, import_core.info)("==> Setting the outputs...");
   (0, import_core.setSecret)(accessToken.token);
   (0, import_core.setOutput)("token", accessToken.token);
   (0, import_core.setOutput)("app_slug", installation.app_slug);
