@@ -9,7 +9,7 @@ export async function post(): Promise<void> {
 
     info("==> Revoking Actions Token...");
 
-    const response = await client.accounts.token.delete(
+    const response = await client.accounts.tokens.delete(
       getState("cf-token-id"),
       {
         account_id: getInput("account_id"),

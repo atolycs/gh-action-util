@@ -63825,7 +63825,7 @@ async function post() {
       apiToken: (0, import_core119.getState)("controller-token")
     });
     (0, import_core119.info)("==> Revoking Actions Token...");
-    const response = await client.accounts.token.delete(
+    const response = await client.accounts.tokens.delete(
       (0, import_core119.getState)("cf-token-id"),
       {
         account_id: (0, import_core119.getInput)("account_id")
