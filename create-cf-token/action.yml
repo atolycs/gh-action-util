@@ -1,0 +1,31 @@
+name: 'Cloudflare Accounts Token Creator'
+description: 'Create Temporary Cloudflare Accounts Token'
+author: 'Atolycs'
+
+# Add your action's branding here. This will appear on the GitHub Marketplace.
+branding:
+  icon: 'heart'
+  color: 'red'
+
+# Define your inputs here.
+inputs:
+  token:
+   description: "Create Additional Accounts Token Key"
+   required: true
+  account_id:
+   description: "Cloudflare Account Id"
+   required: true
+  github_token:
+    description: "Github Apps Installer Token"
+    required: false
+    default: ${{ github.token }}
+
+# Define your outputs here.
+outputs:
+  cf-token:
+    description: 'Cloudflare Additional Token'
+
+runs:
+  using: node20
+  main: dist/index.js
+  post: dist/post.js
