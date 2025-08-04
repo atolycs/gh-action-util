@@ -51,12 +51,15 @@ runs:
           ${{ runner.os }}-node-
 
     - name: Install NPM Dependencies
+      shell: bash
       run: npm ci
 
     - name: Format
+      shell: bash
       run: npm run biome:format
 
     - name: Build SSG
+      shell: bash
       run: npm run build
 
     - name: Deploy Pages Preview
@@ -64,7 +67,7 @@ runs:
       id: cloudflare_pages_deploy
       with:
         apiToken: ${{ steps.cf-deploy-token.outputs.cf-token }}
-        accountId: ${{ inputs.cf-account-id }
+        accountId: ${{ inputs.cf-account-id }}
         command: pages deploy ./dist
 
     - name: Commit status update (Github App)
