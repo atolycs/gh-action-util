@@ -36,6 +36,7 @@ runs:
        private-key: ${{ inputs.gha-app-pem }}
 
     - name: Generate Cloudflare Deploy Token
+      uses: atolycs/gh-action-util/create-cf-token@main
       id: cf-deploy-token
       with: 
        token: ${{ inputs.cf-gentoken }}
