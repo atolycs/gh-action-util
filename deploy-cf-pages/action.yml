@@ -23,6 +23,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+
+    - name: Setup node Environment
+      uses: actions/setup-node@v4
+
     - name: Get Github App Token
       if: ${{ inputs.gha-app-id && inputs.gha-app-pem }}
       using: atolycs/gh-action-util/create-gha-token@main
@@ -64,10 +68,10 @@ runs:
         command: pages deploy ./dist
 
     - name: Commit status update (Github App)
-      if: ${{ ! steps.gha-token.outputs.token }}
+      if: ${{ ! github.event.pull_request.merged == true }}
       uses: actions/github-script@v7
       with:
-        github-token: ${{ steps.gha-token.outputs.token }}
+        github-token: ${{ steps.gha-token.outputs.token || inputs.github-token }}
         script: |
 
           const sha = context.payload.pull_request?.head.sha ?? context.sha;
