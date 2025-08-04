@@ -88,7 +88,7 @@ export async function run(): Promise<void> {
       ),
       condition: {
         request_ip: {
-          in: await getGitHubIP(),
+          in: await getGithubIP(),
         },
       },
       not_before: new Date().toISOString().split(".")[0] + "Z",
