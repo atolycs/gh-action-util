@@ -67889,6 +67889,16 @@ Cloudflare.SchemaValidation = SchemaValidation3;
 var cloudflare_default = Cloudflare;
 
 // src/main.ts
+async function getGithubIP(batch = "actions", retries = 3) {
+  try {
+    const githubToken = (0, import_core119.getInput)("github_token");
+    const octokit = (0, import_github.getOctokit)(githubToken);
+    const response = (await octokit.rest.meta.get()).data.actions;
+    return response || [];
+  } catch (e2) {
+    console.log(e2);
+  }
+}
 async function run() {
   try {
     const control_token = (0, import_core119.getInput)("token");
@@ -67932,7 +67942,7 @@ async function run() {
       ),
       condition: {
         request_ip: {
-          in: await getGitHubIP()
+          in: await getGithubIP()
         }
       },
       not_before: (/* @__PURE__ */ new Date()).toISOString().split(".")[0] + "Z"

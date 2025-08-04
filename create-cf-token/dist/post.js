@@ -63822,7 +63822,7 @@ var import_core119 = __toESM(require_core());
 async function post() {
   try {
     const client = new cloudflare_default({
-      apiToken: core.getState("controller-token")
+      apiToken: (0, import_core119.getState)("controller-token")
     });
     (0, import_core119.info)("==> Revoking Actions Token...");
     const response = await client.accounts.token.delete(
