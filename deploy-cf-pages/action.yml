@@ -53,7 +53,7 @@ runs:
 
     - name: Install NPM Dependencies
       shell: bash
-      run: npm ci
+      run: npm i
 
     - name: Format
       shell: bash
