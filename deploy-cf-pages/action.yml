@@ -29,7 +29,7 @@ runs:
 
     - name: Get Github App Token
       if: ${{ inputs.gha-app-id && inputs.gha-app-pem }}
-      using: atolycs/gh-action-util/create-gha-token@main
+      uses: atolycs/gh-action-util/create-gha-token@main
       id: gha-token
       with:
        app-id: ${{ inputs.gha-app-id }}
