@@ -4,7 +4,7 @@ import { setFailed, getInput, info, debug, getState } from "@actions/core";
 export async function post(): Promise<void> {
   try {
     const client = new Cloudflare({
-      apiToken: core.getState("controller-token"),
+      apiToken: getState("controller-token"),
     });
 
     info("==> Revoking Actions Token...");
