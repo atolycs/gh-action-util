@@ -67949,6 +67949,7 @@ async function run() {
     if (error instanceof Error) (0, import_core119.setFailed)(error.message);
   }
 }
+run();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   run

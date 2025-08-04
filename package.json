@@ -8,10 +8,12 @@
   "license": "MIT",
   "description": "",
   "workspaces": [
-    "create-gha-token"
+    "create-gha-token",
+    "create-cf-token"
   ],
   "dependencies": {
     "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
