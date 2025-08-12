@@ -81,7 +81,9 @@ runs:
         script: |
 
           const sha = context.payload.pull_request?.head.sha ?? context.sha;
-          const pr_number = context.payload.pull_request?.number || ${{ github.event.pull_request.number || github.event.issue.number }};
+          # const pr_number = context.payload.pull_request?.number;
+        
+          const pr_number = context.payload?.number;
 
           await github.rest.repos.createCommitStatus({
             owner: context.repo.owner,
