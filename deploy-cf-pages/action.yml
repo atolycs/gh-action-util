@@ -86,9 +86,9 @@ runs:
         script: |
 
           const sha = context.payload.pull_request?.head.sha ?? context.sha;
-          // const pr_number = context.payload.pull_request?.number;
-        
-          // const pr_number = process.env.GITHUB_REF.split("/")[2];
+          # // const pr_number = context.payload.pull_request?.number;
+          #
+          # // const pr_number = process.env.GITHUB_REF.split("/")[2];
 
           await github.rest.repos.createCommitStatus({
             owner: context.repo.owner,
@@ -119,15 +119,15 @@ runs:
               '| **Last commit** | ' + sha + ' |'
             ].join("\n")
           })
-          # await github.rest.pulls.createReview({
-          #   ...context.repo,
-          #   pull_number: pr_number,
-          #   event: 'COMMENT',
-          #   body: [
-          #     '# Deploy Result',
-          #     '| Name | Result |',
-          #     '| ---- | ------ |',
-          #     '| **Preview URL** | ${{ steps.cloudflare_pages_deploy.outputs.deployment-url }}',
-          #     '| **Last commit** | ' + sha + ' |'
-          #   ].join("\n")
-          # })
+          # // await github.rest.pulls.createReview({
+          # //  ...context.repo,
+          # //  pull_number: pr_number,
+          # //  event: 'COMMENT',
+          # //  body: [
+          # //    '# Deploy Result',
+          # //    '| Name | Result |',
+          # //    '| ---- | ------ |',
+          # //    '| **Preview URL** | ${{ steps.cloudflare_pages_deploy.outputs.deployment-url }}',
+          # //    '| **Last commit** | ' + sha + ' |'
+          # //  ].join("\n")
+          # // })
