@@ -103,7 +103,7 @@ runs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             state: 'open',
-            head: '${{ github.ref_name }}'
+            head: '${{ github.ref_name }}',
             base: 'main'
           })
 
