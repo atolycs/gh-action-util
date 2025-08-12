@@ -85,7 +85,7 @@ runs:
 
           await github.rest.repos.createCommitStatus({
             owner: context.repo.owner,
-            repo: contex.repo.repo,
+            repo: context.repo.repo,
             context: "Cloudflare Pages",
             state: 'success',
             sha,
