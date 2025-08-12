@@ -79,7 +79,7 @@ runs:
         command: pages deploy ./dist
 
     - name: Commit status update (Github App)
-      if: ${{ ! github.event.pull_request.merged == true && github.event.number != "" }}
+      if: ${{ ! github.event.pull_request.merged == true }}
       uses: actions/github-script@v7
       with:
         github-token: ${{ steps.gha-token.outputs.token || inputs.github-token }}
