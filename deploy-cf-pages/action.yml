@@ -102,9 +102,21 @@ runs:
           #   base: 'main'
           # })
 
+          # await github.rest.pulls.createReview({
+          #   ...context.repo,
+          #   pull_number: pr_number || pulls.data[0].number,
+          #   event: 'COMMENT',
+          #   body: [
+          #     '# Deploy Result',
+          #     '| Name | Result |',
+          #     '| ---- | ------ |',
+          #     '| **Preview URL** | ${{ steps.cloudflare_pages_deploy.outputs.deployment-url }}',
+          #     '| **Last commit** | ' + sha + ' |'
+          #   ].join("\n")
+          # })
           await github.rest.pulls.createReview({
             ...context.repo,
-            pull_number: pr_number || pulls.data[0].number,
+            pull_number: String(${{ github.ref_name }}).split("/")[0],
             event: 'COMMENT',
             body: [
               '# Deploy Result',
@@ -114,5 +126,3 @@ runs:
               '| **Last commit** | ' + sha + ' |'
             ].join("\n")
           })
-
-        
