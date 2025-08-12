@@ -81,7 +81,7 @@ runs:
         script: |
 
           const sha = context.payload.pull_request?.head.sha ?? context.sha;
-          const pr_number = context.payload.pull_request?.number;
+          const pr_number = context.payload.pull_request?.number || ${{ github.event.pull_request.number || github.event.issue.number }};
 
           await github.rest.repos.createCommitStatus({
             owner: context.repo.owner,
@@ -92,13 +92,13 @@ runs:
             target_url: '${{ steps.cloudflare_pages_deploy.outputs.deployment-url }}'
           });
 
-          const pulls = await github.rest.pulls.list({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            state: 'open',
-            head: '${{ github.ref_name }}'
-            base: 'main'
-          })
+          # const pulls = await github.rest.pulls.list({
+          #   owner: context.repo.owner,
+          #   repo: context.repo.repo,
+          #   state: 'open',
+          #   head: '${{ github.ref_name }}'
+          #   base: 'main'
+          # })
 
           await github.rest.pulls.createReview({
             ...context.repo,
