@@ -116,7 +116,7 @@ runs:
           # })
           await github.rest.pulls.createReview({
             ...context.repo,
-            pull_number: String(${{ github.ref_name }}).split("/")[0],
+            pull_number: String('${{ github.ref_name }}').split("/")[0],
             event: 'COMMENT',
             body: [
               '# Deploy Result',
