@@ -23,6 +23,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Get GITHUB_REF
+      shell: bash
+      run: |
+        echo ${GITHUB_REF}
+
     - name: Checkout
       uses: actions/checkout@v4
 
