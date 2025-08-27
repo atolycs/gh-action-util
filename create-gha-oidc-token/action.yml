@@ -10,7 +10,8 @@ branding:
 inputs:
   app-id:
     description: Auth GitHub App ID
-    required: true
+    required: false
+    default: 1688372
   provider-endpoint:
     description: URL for Credential provider
     required: false
