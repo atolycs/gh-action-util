@@ -17,8 +17,8 @@ import type {
 } from "../types/genToken.d.ts";
 
 export async function assumeRole(params: GetTokenParams) {
-  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   const GITHUB_API_URL =
+    // biome-ignore lint/complexity/useLiteralKeys: <explanation>
     process.env["GITHUB_API_URL"] || "https://api.github.com";
 
   const payload: GetTokenPayload = {

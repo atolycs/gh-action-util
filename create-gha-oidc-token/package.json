@@ -1,11 +1,11 @@
 {
-  "name": "create-gha-token",
+  "name": "create-gha-oidc-token",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "biome format --fix .",
-    "pack": "$npm_execpath run format && esbuild --target=node22 --platform=node --bundle --outdir=dist src/main.ts"
+    "pack": "$npm_execpath run format && esbuild --log-level=verbose --target=node22 --platform=node --bundle --outdir=dist src/main.ts"
   },
   "author": "",
   "license": "MIT",

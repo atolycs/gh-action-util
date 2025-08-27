@@ -8,7 +8,6 @@ import {
   debug,
   getIDToken,
 } from "@actions/core";
-import { HttpClient } from "@actions/http-client";
 
 import { assumeRole } from "./lib/genToken";
 
@@ -31,6 +30,14 @@ async function run() {
     const audience = audiencePrefix + appID;
     const repositories = parseRepository(getInput("repositories"));
 
+    debug("=== DEBUG INFOMATION ===");
+    debug(`providerEndpoint: ${providerEndpoint}`);
+    debug(`appID: ${appID}`);
+    debug(`audience: ${audience}`);
+    debug(`repositories: ${repositories}`);
+
+    info("==> Calling OIDC Provider...");
+
     assumeRole({
       providerEndpoint,
       audience,
@@ -44,3 +51,5 @@ async function run() {
     }
   }
 }
+
+run()
