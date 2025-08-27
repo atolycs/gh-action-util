@@ -37508,6 +37508,79 @@ var import_core2 = __toESM(require_core());
 // src/lib/genToken.ts
 var import_core = __toESM(require_core());
 var import_http_client = __toESM(require_lib2());
+async function assumeRole(params) {
+  const GITHUB_API_URL = (
+    // biome-ignore lint/complexity/useLiteralKeys: <explanation>
+    process.env["GITHUB_API_URL"] || "https://api.github.com"
+  );
+  const payload = {
+    api_url: GITHUB_API_URL,
+    repositories: params.repositories
+  };
+  const headers = {};
+  if (!isIdTokenAvailable()) {
+    (0, import_core.error)(`
+      OIDC provider is not available.
+      please enable it.
+      https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+    `);
+  }
+  const token = (0, import_core.getIDToken)(params.audience);
+  headers["Authorization"] = `Bearer ${token}`;
+  const client = new import_http_client.HttpClient("github-app-token");
+  const result = await client.postJson(
+    params.providerEndpoint,
+    payload,
+    headers
+  );
+  if (result.statusCode !== import_http_client.HttpCodes.OK) {
+    const resp = result.result;
+    (0, import_core.setFailed)(resp?.messages || "unknown error");
+    return;
+  }
+}
+var isIdTokenAvailable = () => {
+  const token = process.env["ACTIONS_ID_TOKEN_REQEUEST_TOKEN"];
+  const url = process.env["ACTIONS_ID_TOKEN_REQUEST_URL"];
+  return token && url ? true : false;
+};
+
+// src/main.ts
+function parseRepository(repo) {
+  if (!repo) {
+    return [];
+  }
+  return repo.split(/\s+/);
+}
+async function run() {
+  const defaultProviderEndpoint = "http://localhost:8080";
+  const defaultAppID = "12345678";
+  const audiencePrefix = "https://github-oidc.example.com";
+  try {
+    const providerEndpoint = (0, import_core2.getInput)("provider-endpoint") || defaultProviderEndpoint;
+    const appID = (0, import_core2.getInput)("app-id") || defaultAppID;
+    const audience = audiencePrefix + appID;
+    const repositories = parseRepository((0, import_core2.getInput)("repositories"));
+    (0, import_core2.debug)("=== DEBUG INFOMATION ===");
+    (0, import_core2.debug)(`providerEndpoint: ${providerEndpoint}`);
+    (0, import_core2.debug)(`appID: ${appID}`);
+    (0, import_core2.debug)(`audience: ${audience}`);
+    (0, import_core2.debug)(`repositories: ${repositories}`);
+    (0, import_core2.info)("==> Calling OIDC Provider...");
+    assumeRole({
+      providerEndpoint,
+      audience,
+      repositories
+    });
+  } catch (error2) {
+    if (error2 instanceof Error) {
+      (0, import_core2.setFailed)(error2);
+    } else {
+      (0, import_core2.setFailed)(`${error2}`);
+    }
+  }
+}
+run();
 /*! Bundled license information:
 
 undici/lib/fetch/body.js:
