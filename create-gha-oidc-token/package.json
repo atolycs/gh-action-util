@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky",
     "format": "biome format --fix .",
     "pack": "$npm_execpath run format && esbuild --target=node22 --platform=node --bundle --outdir=dist src/main.ts src/post.ts"
   },
@@ -12,8 +11,7 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
-    "@atolycs/biome-config": "^0.2.3",
-    "husky": "^9.1.7"
+    "@atolycs/biome-config": "^0.2.3"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2"
