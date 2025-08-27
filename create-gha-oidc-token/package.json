@@ -11,6 +11,7 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@actions/http-client": "^2.2.3",
     "@atolycs/biome-config": "^0.2.3"
   },
   "dependencies": {
