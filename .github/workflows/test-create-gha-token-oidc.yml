@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Run
-        uses: atolycs/gh-action-util/create-gha-token-oidc-token@feature/create-gha-oidc-token
+        uses: atolycs/gh-action-util/create-gha-oidc-token@feature/create-gha-oidc-token
         id: generate-token
         with:
           app-id: ${{ secrets.APP_ID }}
