@@ -1,5 +1,3 @@
 {
-  "extends": [
-    "@atolycs/biome-config"
-  ]
+  "extends": ["@atolycs/biome-config"]
 }

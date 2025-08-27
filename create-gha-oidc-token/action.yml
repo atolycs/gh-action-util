@@ -1,4 +1,4 @@
-name: Create GitHub App Installation Token
+name: Create GitHub App Installation Token from OIDC
 description: Generate Temporary Token
 
 author: Atolycs
@@ -9,23 +9,18 @@ branding:
 
 inputs:
   app-id:
-    description: GitHub App ID
+    description: Auth GitHub App ID
     required: true
-  private-key:
-    description: GitHub App Private Key
-    required: true
-
+  provider-endpoint:
+    description: URL for Credential provider
+    required: false
+  repositories:
+    description: repositories you want to access. It is a list of global node ids of the repositories
+    required: false
 outputs:
-  token: 
-    description: GitHub App Installation Token
-  commit-user:
-    description: GitHub App Commit User
-  commit-email:
-    description: GitHub App Commit Email
 
 
 runs:
   using: node20
   main: dist/main.js
-  post: dist/post.js
   post-if: always()
