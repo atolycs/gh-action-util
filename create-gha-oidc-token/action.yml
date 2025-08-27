@@ -18,7 +18,7 @@ inputs:
   repositories:
     description: repositories you want to access. It is a list of global node ids of the repositories
     required: false
-outputs:
+#outputs:
 
 
 runs:

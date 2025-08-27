@@ -15,10 +15,10 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
 
-      - name: Authentication Test
-        env: 
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
-        run: |
-          gh auth status
-          gh api /octocat
+#      - name: Authentication Test
+#        env: 
+#          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+#        run: |
+#          gh auth status
+#          gh api /octocat
 
