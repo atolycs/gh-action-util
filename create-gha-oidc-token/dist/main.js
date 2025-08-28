@@ -37557,7 +37557,7 @@ function parseRepository(repo) {
 async function run() {
   const defaultProviderEndpoint = "http://localhost:8080";
   const defaultAppID = "12345678";
-  const audiencePrefix = "https://github-oidc.example.com";
+  const audiencePrefix = "https://github-oidc.example.com/";
   try {
     const providerEndpoint = (0, import_core2.getInput)("provider-endpoint") || defaultProviderEndpoint;
     const appID = (0, import_core2.getInput)("app-id") || defaultAppID;

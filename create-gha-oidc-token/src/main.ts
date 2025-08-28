@@ -21,7 +21,7 @@ function parseRepository(repo: string): string[] {
 async function run() {
   const defaultProviderEndpoint = "http://localhost:8080";
   const defaultAppID = "12345678";
-  const audiencePrefix = "https://github-oidc.example.com";
+  const audiencePrefix = "https://github-oidc.example.com/";
 
   try {
     const providerEndpoint =
