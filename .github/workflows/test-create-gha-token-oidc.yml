@@ -8,6 +8,8 @@ jobs:
   auth:
     name: GitHub App Auth Test
     runs-on: ubuntu-latest
+    permissions:
+       id-token: write
     steps:
       - name: Check Run
         uses: atolycs/gh-action-util/create-gha-oidc-token@feature/create-gha-oidc-token
