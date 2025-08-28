@@ -26,8 +26,6 @@ export async function assumeRole(params: GetTokenParams) {
     api_url: GITHUB_API_URL,
     repositories: params.repositories,
   };
-  debug(`REQUEST_TOKEN: ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`);
-  debug(`REQUEST_URL: ${process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]}`);
   const headers: { [name: string]: string } = {};
 
   if (!isIdTokenAvailable()) {
