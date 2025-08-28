@@ -17,6 +17,7 @@ jobs:
         id: generate-token
         with:
           app-id: ${{ secrets.APP_ID }}
+          provider-endpoint: ${{ vars.PROVIDER_ENDPOINT }}
 
 #      - name: Authentication Test
 #        env: 
