@@ -37517,8 +37517,6 @@ async function assumeRole(params) {
     api_url: GITHUB_API_URL,
     repositories: params.repositories
   };
-  (0, import_core.debug)(`REQUEST_TOKEN: ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`);
-  (0, import_core.debug)(`REQUEST_URL: ${process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]}`);
   const headers = {};
   if (!isIdTokenAvailable()) {
     (0, import_core.error)(`
@@ -37527,7 +37525,7 @@ async function assumeRole(params) {
       https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
     `);
   }
-  const token = (0, import_core.getIDToken)(params.audience);
+  const token = await (0, import_core.getIDToken)(params.audience);
   headers["Authorization"] = `Bearer ${token}`;
   const client = new import_http_client.HttpClient("github-app-token");
   const result = await client.postJson(

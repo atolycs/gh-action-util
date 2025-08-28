@@ -1,12 +1,12 @@
 import {
-  getIDToken,
+  debug,
   error,
+  getIDToken,
   info,
-  setSecret,
-  setOutput,
   saveState,
   setFailed,
-  debug,
+  setOutput,
+  setSecret,
 } from "@actions/core";
 
 import { HttpClient, HttpCodes } from "@actions/http-client";
@@ -36,7 +36,7 @@ export async function assumeRole(params: GetTokenParams) {
     `);
   }
 
-  const token = getIDToken(params.audience);
+  const token = await getIDToken(params.audience);
   // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   headers["Authorization"] = `Bearer ${token}`;
 
