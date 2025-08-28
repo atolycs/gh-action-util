@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/lefthook.json",
+  "remotes": [
+    {
+      "git_url": "https://github.com/atolycs/biome-config",
+      "configs": [
+        "lefthooks/lefthook.json"
+      ]
+    }
+  ]
+}
