@@ -37517,7 +37517,7 @@ async function assumeRole(params) {
     api_url: GITHUB_API_URL,
     repositories: params.repositories
   };
-  (0, import_core.debug)(`REQUEST_TOKEN: ${process.env["ACTIONS_ID_TOKEN_REQEUEST_TOKEN"]}`);
+  (0, import_core.debug)(`REQUEST_TOKEN: ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`);
   (0, import_core.debug)(`REQUEST_URL: ${process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]}`);
   const headers = {};
   if (!isIdTokenAvailable()) {
@@ -37542,7 +37542,7 @@ async function assumeRole(params) {
   }
 }
 var isIdTokenAvailable = () => {
-  const token = process.env["ACTIONS_ID_TOKEN_REQEUEST_TOKEN"];
+  const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];
   const url = process.env["ACTIONS_ID_TOKEN_REQUEST_URL"];
   return token && url ? true : false;
 };

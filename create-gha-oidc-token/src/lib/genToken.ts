@@ -26,7 +26,7 @@ export async function assumeRole(params: GetTokenParams) {
     api_url: GITHUB_API_URL,
     repositories: params.repositories,
   };
-  debug(`REQUEST_TOKEN: ${process.env["ACTIONS_ID_TOKEN_REQEUEST_TOKEN"]}`);
+  debug(`REQUEST_TOKEN: ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`);
   debug(`REQUEST_URL: ${process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]}`);
   const headers: { [name: string]: string } = {};
 
@@ -58,7 +58,7 @@ export async function assumeRole(params: GetTokenParams) {
 
 const isIdTokenAvailable = (): boolean => {
   // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-  const token = process.env["ACTIONS_ID_TOKEN_REQEUEST_TOKEN"];
+  const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];
   // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   const url = process.env["ACTIONS_ID_TOKEN_REQUEST_URL"];
   // biome-ignore lint/complexity/noUselessTernary: <explanation>
