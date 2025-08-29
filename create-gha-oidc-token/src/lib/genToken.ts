@@ -36,6 +36,11 @@ export async function assumeRole(params: GetTokenParams) {
     `);
   }
 
+  debug(`Fetch ACTIONS_ID_TOKEN_REQUEST_URL`);
+  const response = await fetch(process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]);
+
+  console.log(response);
+
   const token = await getIDToken(params.audience);
   // biome-ignore lint/complexity/useLiteralKeys: <explanation>
   headers["Authorization"] = `Bearer ${token}`;
