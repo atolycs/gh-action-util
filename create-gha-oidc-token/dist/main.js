@@ -11692,7 +11692,7 @@ var require_headers = __commonJS({
         return headers;
       }
     };
-    var Headers = class _Headers {
+    var Headers2 = class _Headers {
       constructor(init = void 0) {
         if (init === kConstruct) {
           return;
@@ -11887,8 +11887,8 @@ var require_headers = __commonJS({
         return this[kHeadersList];
       }
     };
-    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
-    Object.defineProperties(Headers.prototype, {
+    Headers2.prototype[Symbol.iterator] = Headers2.prototype.entries;
+    Object.defineProperties(Headers2.prototype, {
       append: kEnumerableProperty,
       delete: kEnumerableProperty,
       get: kEnumerableProperty,
@@ -11923,7 +11923,7 @@ var require_headers = __commonJS({
     };
     module2.exports = {
       fill,
-      Headers,
+      Headers: Headers2,
       HeadersList
     };
   }
@@ -11933,7 +11933,7 @@ var require_headers = __commonJS({
 var require_response = __commonJS({
   "../node_modules/undici/lib/fetch/response.js"(exports2, module2) {
     "use strict";
-    var { Headers, HeadersList, fill } = require_headers();
+    var { Headers: Headers2, HeadersList, fill } = require_headers();
     var { extractBody, cloneBody, mixinBody } = require_body();
     var util = require_util();
     var { kEnumerableProperty } = util;
@@ -12025,7 +12025,7 @@ var require_response = __commonJS({
         init = webidl.converters.ResponseInit(init);
         this[kRealm] = { settingsObject: {} };
         this[kState] = makeResponse({});
-        this[kHeaders] = new Headers(kConstruct);
+        this[kHeaders] = new Headers2(kConstruct);
         this[kHeaders][kGuard] = "response";
         this[kHeaders][kHeadersList] = this[kState].headersList;
         this[kHeaders][kRealm] = this[kRealm];
@@ -12313,7 +12313,7 @@ var require_request2 = __commonJS({
   "../node_modules/undici/lib/fetch/request.js"(exports2, module2) {
     "use strict";
     var { extractBody, mixinBody, cloneBody } = require_body();
-    var { Headers, fill: fillHeaders, HeadersList } = require_headers();
+    var { Headers: Headers2, fill: fillHeaders, HeadersList } = require_headers();
     var { FinalizationRegistry } = require_dispatcher_weakref()();
     var util = require_util();
     var {
@@ -12557,7 +12557,7 @@ var require_request2 = __commonJS({
             requestFinalizer.register(ac, { signal, abort });
           }
         }
-        this[kHeaders] = new Headers(kConstruct);
+        this[kHeaders] = new Headers2(kConstruct);
         this[kHeaders][kHeadersList] = request.headersList;
         this[kHeaders][kGuard] = "request";
         this[kHeaders][kRealm] = this[kRealm];
@@ -12756,7 +12756,7 @@ var require_request2 = __commonJS({
         const clonedRequestObject = new _Request(kConstruct);
         clonedRequestObject[kState] = clonedRequest;
         clonedRequestObject[kRealm] = this[kRealm];
-        clonedRequestObject[kHeaders] = new Headers(kConstruct);
+        clonedRequestObject[kHeaders] = new Headers2(kConstruct);
         clonedRequestObject[kHeaders][kHeadersList] = clonedRequest.headersList;
         clonedRequestObject[kHeaders][kGuard] = this[kHeaders][kGuard];
         clonedRequestObject[kHeaders][kRealm] = this[kHeaders][kRealm];
@@ -12958,7 +12958,7 @@ var require_fetch = __commonJS({
       filterResponse,
       makeResponse
     } = require_response();
-    var { Headers } = require_headers();
+    var { Headers: Headers2 } = require_headers();
     var { Request, makeRequest } = require_request2();
     var zlib = require("zlib");
     var {
@@ -13871,7 +13871,7 @@ var require_fetch = __commonJS({
               }
               let codings = [];
               let location = "";
-              const headers = new Headers();
+              const headers = new Headers2();
               if (Array.isArray(headersList)) {
                 for (let n = 0; n < headersList.length; n += 2) {
                   const key = headersList[n + 0].toString("latin1");
@@ -13956,7 +13956,7 @@ var require_fetch = __commonJS({
               if (status !== 101) {
                 return;
               }
-              const headers = new Headers();
+              const headers = new Headers2();
               for (let n = 0; n < headersList.length; n += 2) {
                 const key = headersList[n + 0].toString("latin1");
                 const val = headersList[n + 1].toString("latin1");
@@ -15783,10 +15783,10 @@ var require_cookies = __commonJS({
     var { parseSetCookie } = require_parse();
     var { stringify } = require_util6();
     var { webidl } = require_webidl();
-    var { Headers } = require_headers();
+    var { Headers: Headers2 } = require_headers();
     function getCookies(headers) {
       webidl.argumentLengthCheck(arguments, 1, { header: "getCookies" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       const cookie = headers.get("cookie");
       const out = {};
       if (!cookie) {
@@ -15800,7 +15800,7 @@ var require_cookies = __commonJS({
     }
     function deleteCookie(headers, name, attributes) {
       webidl.argumentLengthCheck(arguments, 2, { header: "deleteCookie" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       name = webidl.converters.DOMString(name);
       attributes = webidl.converters.DeleteCookieAttributes(attributes);
       setCookie(headers, {
@@ -15812,7 +15812,7 @@ var require_cookies = __commonJS({
     }
     function getSetCookies(headers) {
       webidl.argumentLengthCheck(arguments, 1, { header: "getSetCookies" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       const cookies = headers.getSetCookie();
       if (!cookies) {
         return [];
@@ -15821,7 +15821,7 @@ var require_cookies = __commonJS({
     }
     function setCookie(headers, cookie) {
       webidl.argumentLengthCheck(arguments, 2, { header: "setCookie" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       cookie = webidl.converters.Cookie(cookie);
       const str = stringify(cookie);
       if (str) {
@@ -16314,7 +16314,7 @@ var require_connection = __commonJS({
     var { CloseEvent } = require_events();
     var { makeRequest } = require_request2();
     var { fetching } = require_fetch();
-    var { Headers } = require_headers();
+    var { Headers: Headers2 } = require_headers();
     var { getGlobalDispatcher } = require_global2();
     var { kHeadersList } = require_symbols();
     var channels = {};
@@ -16339,7 +16339,7 @@ var require_connection = __commonJS({
         redirect: "error"
       });
       if (options.headers) {
-        const headersList = new Headers(options.headers)[kHeadersList];
+        const headersList = new Headers2(options.headers)[kHeadersList];
         request.headersList = headersList;
       }
       const keyValue = crypto.randomBytes(16).toString("base64");
@@ -17378,11 +17378,11 @@ var require_lib = __commonJS({
       HttpCodes3[HttpCodes3["ServiceUnavailable"] = 503] = "ServiceUnavailable";
       HttpCodes3[HttpCodes3["GatewayTimeout"] = 504] = "GatewayTimeout";
     })(HttpCodes2 || (exports2.HttpCodes = HttpCodes2 = {}));
-    var Headers;
-    (function(Headers2) {
-      Headers2["Accept"] = "accept";
-      Headers2["ContentType"] = "content-type";
-    })(Headers || (exports2.Headers = Headers = {}));
+    var Headers2;
+    (function(Headers3) {
+      Headers3["Accept"] = "accept";
+      Headers3["ContentType"] = "content-type";
+    })(Headers2 || (exports2.Headers = Headers2 = {}));
     var MediaTypes;
     (function(MediaTypes2) {
       MediaTypes2["ApplicationJson"] = "application/json";
@@ -17537,7 +17537,7 @@ var require_lib = __commonJS({
        */
       getJson(requestUrl, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
           const res = yield this.get(requestUrl, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -17545,8 +17545,8 @@ var require_lib = __commonJS({
       postJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.ContentType, MediaTypes.ApplicationJson);
           const res = yield this.post(requestUrl, data, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -17554,8 +17554,8 @@ var require_lib = __commonJS({
       putJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.ContentType, MediaTypes.ApplicationJson);
           const res = yield this.put(requestUrl, data, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -17563,8 +17563,8 @@ var require_lib = __commonJS({
       patchJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.ContentType, MediaTypes.ApplicationJson);
           const res = yield this.patch(requestUrl, data, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -31292,7 +31292,7 @@ var require_headers2 = __commonJS({
         return headers;
       }
     };
-    var Headers = class _Headers {
+    var Headers2 = class _Headers {
       constructor(init = void 0) {
         if (init === kConstruct) {
           return;
@@ -31487,8 +31487,8 @@ var require_headers2 = __commonJS({
         return this[kHeadersList];
       }
     };
-    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
-    Object.defineProperties(Headers.prototype, {
+    Headers2.prototype[Symbol.iterator] = Headers2.prototype.entries;
+    Object.defineProperties(Headers2.prototype, {
       append: kEnumerableProperty,
       delete: kEnumerableProperty,
       get: kEnumerableProperty,
@@ -31523,7 +31523,7 @@ var require_headers2 = __commonJS({
     };
     module2.exports = {
       fill,
-      Headers,
+      Headers: Headers2,
       HeadersList
     };
   }
@@ -31533,7 +31533,7 @@ var require_headers2 = __commonJS({
 var require_response2 = __commonJS({
   "node_modules/undici/lib/fetch/response.js"(exports2, module2) {
     "use strict";
-    var { Headers, HeadersList, fill } = require_headers2();
+    var { Headers: Headers2, HeadersList, fill } = require_headers2();
     var { extractBody, cloneBody, mixinBody } = require_body2();
     var util = require_util8();
     var { kEnumerableProperty } = util;
@@ -31625,7 +31625,7 @@ var require_response2 = __commonJS({
         init = webidl.converters.ResponseInit(init);
         this[kRealm] = { settingsObject: {} };
         this[kState] = makeResponse({});
-        this[kHeaders] = new Headers(kConstruct);
+        this[kHeaders] = new Headers2(kConstruct);
         this[kHeaders][kGuard] = "response";
         this[kHeaders][kHeadersList] = this[kState].headersList;
         this[kHeaders][kRealm] = this[kRealm];
@@ -31913,7 +31913,7 @@ var require_request4 = __commonJS({
   "node_modules/undici/lib/fetch/request.js"(exports2, module2) {
     "use strict";
     var { extractBody, mixinBody, cloneBody } = require_body2();
-    var { Headers, fill: fillHeaders, HeadersList } = require_headers2();
+    var { Headers: Headers2, fill: fillHeaders, HeadersList } = require_headers2();
     var { FinalizationRegistry } = require_dispatcher_weakref2()();
     var util = require_util8();
     var {
@@ -32157,7 +32157,7 @@ var require_request4 = __commonJS({
             requestFinalizer.register(ac, { signal, abort });
           }
         }
-        this[kHeaders] = new Headers(kConstruct);
+        this[kHeaders] = new Headers2(kConstruct);
         this[kHeaders][kHeadersList] = request.headersList;
         this[kHeaders][kGuard] = "request";
         this[kHeaders][kRealm] = this[kRealm];
@@ -32356,7 +32356,7 @@ var require_request4 = __commonJS({
         const clonedRequestObject = new _Request(kConstruct);
         clonedRequestObject[kState] = clonedRequest;
         clonedRequestObject[kRealm] = this[kRealm];
-        clonedRequestObject[kHeaders] = new Headers(kConstruct);
+        clonedRequestObject[kHeaders] = new Headers2(kConstruct);
         clonedRequestObject[kHeaders][kHeadersList] = clonedRequest.headersList;
         clonedRequestObject[kHeaders][kGuard] = this[kHeaders][kGuard];
         clonedRequestObject[kHeaders][kRealm] = this[kHeaders][kRealm];
@@ -32558,7 +32558,7 @@ var require_fetch2 = __commonJS({
       filterResponse,
       makeResponse
     } = require_response2();
-    var { Headers } = require_headers2();
+    var { Headers: Headers2 } = require_headers2();
     var { Request, makeRequest } = require_request4();
     var zlib = require("zlib");
     var {
@@ -33471,7 +33471,7 @@ var require_fetch2 = __commonJS({
               }
               let codings = [];
               let location = "";
-              const headers = new Headers();
+              const headers = new Headers2();
               if (Array.isArray(headersList)) {
                 for (let n = 0; n < headersList.length; n += 2) {
                   const key = headersList[n + 0].toString("latin1");
@@ -33556,7 +33556,7 @@ var require_fetch2 = __commonJS({
               if (status !== 101) {
                 return;
               }
-              const headers = new Headers();
+              const headers = new Headers2();
               for (let n = 0; n < headersList.length; n += 2) {
                 const key = headersList[n + 0].toString("latin1");
                 const val = headersList[n + 1].toString("latin1");
@@ -35383,10 +35383,10 @@ var require_cookies2 = __commonJS({
     var { parseSetCookie } = require_parse2();
     var { stringify } = require_util13();
     var { webidl } = require_webidl2();
-    var { Headers } = require_headers2();
+    var { Headers: Headers2 } = require_headers2();
     function getCookies(headers) {
       webidl.argumentLengthCheck(arguments, 1, { header: "getCookies" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       const cookie = headers.get("cookie");
       const out = {};
       if (!cookie) {
@@ -35400,7 +35400,7 @@ var require_cookies2 = __commonJS({
     }
     function deleteCookie(headers, name, attributes) {
       webidl.argumentLengthCheck(arguments, 2, { header: "deleteCookie" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       name = webidl.converters.DOMString(name);
       attributes = webidl.converters.DeleteCookieAttributes(attributes);
       setCookie(headers, {
@@ -35412,7 +35412,7 @@ var require_cookies2 = __commonJS({
     }
     function getSetCookies(headers) {
       webidl.argumentLengthCheck(arguments, 1, { header: "getSetCookies" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       const cookies = headers.getSetCookie();
       if (!cookies) {
         return [];
@@ -35421,7 +35421,7 @@ var require_cookies2 = __commonJS({
     }
     function setCookie(headers, cookie) {
       webidl.argumentLengthCheck(arguments, 2, { header: "setCookie" });
-      webidl.brandCheck(headers, Headers, { strict: false });
+      webidl.brandCheck(headers, Headers2, { strict: false });
       cookie = webidl.converters.Cookie(cookie);
       const str = stringify(cookie);
       if (str) {
@@ -35914,7 +35914,7 @@ var require_connection2 = __commonJS({
     var { CloseEvent } = require_events2();
     var { makeRequest } = require_request4();
     var { fetching } = require_fetch2();
-    var { Headers } = require_headers2();
+    var { Headers: Headers2 } = require_headers2();
     var { getGlobalDispatcher } = require_global4();
     var { kHeadersList } = require_symbols6();
     var channels = {};
@@ -35939,7 +35939,7 @@ var require_connection2 = __commonJS({
         redirect: "error"
       });
       if (options.headers) {
-        const headersList = new Headers(options.headers)[kHeadersList];
+        const headersList = new Headers2(options.headers)[kHeadersList];
         request.headersList = headersList;
       }
       const keyValue = crypto.randomBytes(16).toString("base64");
@@ -36978,11 +36978,11 @@ var require_lib2 = __commonJS({
       HttpCodes3[HttpCodes3["ServiceUnavailable"] = 503] = "ServiceUnavailable";
       HttpCodes3[HttpCodes3["GatewayTimeout"] = 504] = "GatewayTimeout";
     })(HttpCodes2 || (exports2.HttpCodes = HttpCodes2 = {}));
-    var Headers;
-    (function(Headers2) {
-      Headers2["Accept"] = "accept";
-      Headers2["ContentType"] = "content-type";
-    })(Headers || (exports2.Headers = Headers = {}));
+    var Headers2;
+    (function(Headers3) {
+      Headers3["Accept"] = "accept";
+      Headers3["ContentType"] = "content-type";
+    })(Headers2 || (exports2.Headers = Headers2 = {}));
     var MediaTypes;
     (function(MediaTypes2) {
       MediaTypes2["ApplicationJson"] = "application/json";
@@ -37137,7 +37137,7 @@ var require_lib2 = __commonJS({
        */
       getJson(requestUrl, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
           const res = yield this.get(requestUrl, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -37145,8 +37145,8 @@ var require_lib2 = __commonJS({
       postJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.ContentType, MediaTypes.ApplicationJson);
           const res = yield this.post(requestUrl, data, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -37154,8 +37154,8 @@ var require_lib2 = __commonJS({
       putJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.ContentType, MediaTypes.ApplicationJson);
           const res = yield this.put(requestUrl, data, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -37163,8 +37163,8 @@ var require_lib2 = __commonJS({
       patchJson(requestUrl, obj, additionalHeaders = {}) {
         return __awaiter(this, void 0, void 0, function* () {
           const data = JSON.stringify(obj, null, 2);
-          additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
-          additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.Accept, MediaTypes.ApplicationJson);
+          additionalHeaders[Headers2.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers2.ContentType, MediaTypes.ApplicationJson);
           const res = yield this.patch(requestUrl, data, additionalHeaders);
           return this._processResponse(res, this.requestOptions);
         });
@@ -37526,7 +37526,11 @@ async function assumeRole(params) {
     `);
   }
   (0, import_core.debug)(`Fetch ACTIONS_ID_TOKEN_REQUEST_URL`);
-  const response = await fetch(process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]);
+  const response = await fetch(process.env["ACTIONS_ID_TOKEN_REQUEST_URL"], {
+    headers: new Headers({
+      Authorization: `Bearer ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`
+    })
+  });
   console.log(response);
   const token = await (0, import_core.getIDToken)(params.audience);
   headers["Authorization"] = `Bearer ${token}`;

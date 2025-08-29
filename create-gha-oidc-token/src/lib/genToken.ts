@@ -37,7 +37,11 @@ export async function assumeRole(params: GetTokenParams) {
   }
 
   debug(`Fetch ACTIONS_ID_TOKEN_REQUEST_URL`);
-  const response = await fetch(process.env["ACTIONS_ID_TOKEN_REQUEST_URL"]);
+  const response = await fetch(process.env["ACTIONS_ID_TOKEN_REQUEST_URL"], {
+    headers: new Headers({
+      Authorization: `Bearer ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`,
+    }),
+  });
 
   console.log(response);
 
