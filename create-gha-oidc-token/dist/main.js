@@ -37531,7 +37531,7 @@ async function assumeRole(params) {
       Authorization: `Bearer ${process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]}`
     })
   });
-  console.log(response.body);
+  console.log(response.json());
   const token = await (0, import_core.getIDToken)(params.audience);
   headers["Authorization"] = `Bearer ${token}`;
   const client = new import_http_client.HttpClient("github-app-token");

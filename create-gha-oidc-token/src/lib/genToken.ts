@@ -43,7 +43,7 @@ export async function assumeRole(params: GetTokenParams) {
     }),
   });
 
-  console.log(response.body);
+  console.log(response.json());
 
   const token = await getIDToken(params.audience);
   // biome-ignore lint/complexity/useLiteralKeys: <explanation>
