@@ -16,7 +16,7 @@ jobs:
         uses: atolycs/gh-action-util/create-gha-oidc-token@feature/create-gha-oidc-token
         id: generate-token
         with:
-          app-id: ${{ secrets.APP_ID }}
+          app-id: ${{ vars.APP_ID }}
           provider-endpoint: ${{ vars.PROVIDER_ENDPOINT }}
 
 #      - name: Authentication Test
