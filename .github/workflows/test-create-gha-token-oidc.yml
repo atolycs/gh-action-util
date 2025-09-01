@@ -8,6 +8,9 @@ jobs:
   auth:
     name: GitHub App Auth Test
     runs-on: ubuntu-latest
+    strategy:
+       matrix:
+         app-id: [ "${{ vars.APP_ID }}", "1823521"]
     permissions:
        id-token: write
        contents: read
@@ -16,7 +19,7 @@ jobs:
         uses: atolycs/gh-action-util/create-gha-oidc-token@feature/create-gha-oidc-token
         id: generate-token
         with:
-          app-id: ${{ vars.APP_ID }}
+          app-id: ${{ matrix.app-id }}
           provider-endpoint: ${{ vars.PROVIDER_ENDPOINT }}
 
 #      - name: Authentication Test
