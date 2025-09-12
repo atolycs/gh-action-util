@@ -62,7 +62,15 @@ export async function assumeRole(params: GetTokenParams) {
     setFailed(resp?.messages || "unknown error");
     return;
   }
-  console.log(result);
+
+  console.log(`==> ${result.message}`);
+  console.log(`==> Token Available to 60 min`);
+
+  console.log(`==> Setting the outputs...`);
+
+  setSecret(result.token);
+  setOutput("token", result.token);
+  setOutput("app_slug", "");
 }
 
 const isIdTokenAvailable = (): boolean => {
