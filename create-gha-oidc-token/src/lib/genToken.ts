@@ -15,6 +15,7 @@ import type {
   GetTokenError,
   GetTokenParams,
   GetTokenPayload,
+  OIDCTokenResponse,
 } from "../types/genToken.d.ts";
 
 export async function assumeRole(params: GetTokenParams) {
@@ -51,7 +52,7 @@ export async function assumeRole(params: GetTokenParams) {
 
   const client = new HttpClient("github-app-token");
 
-  const result = await client.postJson<GetTokenError>(
+  const result = await client.postJson<OIDCTokenResponse | GetTokenError>(
     params.providerEndpoint,
     payload,
     headers,
@@ -61,6 +62,7 @@ export async function assumeRole(params: GetTokenParams) {
     setFailed(resp?.messages || "unknown error");
     return;
   }
+  console.log(result);
 }
 
 const isIdTokenAvailable = (): boolean => {

@@ -37545,6 +37545,7 @@ async function assumeRole(params) {
     (0, import_core.setFailed)(resp?.messages || "unknown error");
     return;
   }
+  console.log(result);
 }
 var isIdTokenAvailable = () => {
   const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];

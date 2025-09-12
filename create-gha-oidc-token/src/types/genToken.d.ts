@@ -12,3 +12,9 @@ export interface GetTokenPayload {
 export interface GetTokenError {
   messages: string;
 }
+
+export interface OIDCTokenResponse {
+  token: string;
+  expires_at: string;
+  [name: string]: unknown;
+}
