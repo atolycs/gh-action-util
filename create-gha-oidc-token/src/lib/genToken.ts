@@ -63,7 +63,7 @@ export async function assumeRole(params: GetTokenParams) {
     return;
   }
 
-  debug(result);
+  debug(result.result);
   console.log(`==> ${result.message}`);
   console.log(`==> Token Available to 60 min`);
 

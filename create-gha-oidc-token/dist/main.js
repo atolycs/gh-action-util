@@ -37545,7 +37545,7 @@ async function assumeRole(params) {
     (0, import_core.setFailed)(resp?.messages || "unknown error");
     return;
   }
-  (0, import_core.debug)(result);
+  (0, import_core.debug)(result.result);
   console.log(`==> ${result.message}`);
   console.log(`==> Token Available to 60 min`);
   console.log(`==> Setting the outputs...`);

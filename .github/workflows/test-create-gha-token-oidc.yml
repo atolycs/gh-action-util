@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
        matrix:
-         app-id: [ "${{ vars.APP_ID }}", "1823521"]
+         app-id: [ "${{ vars.APP_ID }}" ]
     permissions:
        id-token: write
        contents: read
