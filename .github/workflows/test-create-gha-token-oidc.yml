@@ -23,7 +23,7 @@ jobs:
           provider-endpoint: ${{ vars.PROVIDER_ENDPOINT }}
 
       - name: Authentication Test
-        env: |
+        env: 
           GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           gh auth status
