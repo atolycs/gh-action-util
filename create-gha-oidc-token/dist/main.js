@@ -37535,17 +37535,18 @@ async function assumeRole(params) {
   const token = await (0, import_core.getIDToken)(params.audience);
   headers["Authorization"] = `Bearer ${token}`;
   const client = new import_http_client.HttpClient("github-app-token");
-  const result = await client.postJson(
+  const respToken = await client.postJson(
     params.providerEndpoint,
     payload,
     headers
   );
-  if (result.statusCode !== import_http_client.HttpCodes.OK) {
-    const resp = result.result;
-    (0, import_core.setFailed)(resp?.messages || "unknown error");
+  if (respToken.statusCode !== import_http_client.HttpCodes.OK) {
+    const result2 = respToken.result;
+    (0, import_core.setFailed)(result2?.messages || "unknown error");
     return;
   }
-  (0, import_core.debug)(result.result);
+  (0, import_core.debug)(respToken.result);
+  const { result } = respToken;
   console.log(`==> ${result.message}`);
   console.log(`==> Token Available to 60 min`);
   console.log(`==> Setting the outputs...`);

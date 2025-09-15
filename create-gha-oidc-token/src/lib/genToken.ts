@@ -52,18 +52,21 @@ export async function assumeRole(params: GetTokenParams) {
 
   const client = new HttpClient("github-app-token");
 
-  const result = await client.postJson<OIDCTokenResponse | GetTokenError>(
+  const respToken = await client.postJson<OIDCTokenResponse | GetTokenError>(
     params.providerEndpoint,
     payload,
     headers,
   );
-  if (result.statusCode !== HttpCodes.OK) {
-    const resp = result.result as GetTokenError;
-    setFailed(resp?.messages || "unknown error");
+  if (respToken.statusCode !== HttpCodes.OK) {
+    const result = respToken.result as GetTokenError;
+    setFailed(result?.messages || "unknown error");
     return;
   }
 
-  debug(result.result);
+  debug(respToken.result);
+
+  const { result } = respToken;
+
   console.log(`==> ${result.message}`);
   console.log(`==> Token Available to 60 min`);
 
