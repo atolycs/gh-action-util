@@ -37545,7 +37545,13 @@ async function assumeRole(params) {
     (0, import_core.setFailed)(resp?.messages || "unknown error");
     return;
   }
-  console.log(result);
+  (0, import_core.debug)(result);
+  console.log(`==> ${result.message}`);
+  console.log(`==> Token Available to 60 min`);
+  console.log(`==> Setting the outputs...`);
+  (0, import_core.setSecret)(result.token);
+  (0, import_core.setOutput)("token", result.token);
+  (0, import_core.setOutput)("app_slug", "");
 }
 var isIdTokenAvailable = () => {
   const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];
