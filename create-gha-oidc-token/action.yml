@@ -31,3 +31,4 @@ runs:
   using: node20
   main: dist/main.js
   post-if: always()
+  post: dist/post.js

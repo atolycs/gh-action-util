@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "biome format --fix .",
+    "script:pack": "$npm_execpath run format && node ./scripts/build.mjs",
     "pack": "$npm_execpath run format && esbuild --log-level=verbose --target=node22 --platform=node --bundle --outdir=dist src/main.ts"
   },
   "author": "",
@@ -12,7 +13,8 @@
   "description": "",
   "devDependencies": {
     "@actions/http-client": "^2.2.3",
-    "@atolycs/biome-config": "^0.2.3"
+    "@atolycs/biome-config": "^0.2.3",
+    "glob": "^11.0.3"
   },
   "dependencies": {
     "jsonwebtoken": "^9.0.2"
