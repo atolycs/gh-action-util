@@ -68,7 +68,7 @@ export async function assumeRole(params: GetTokenParams) {
 
   const { result }: OIDCTokenResponse = respToken;
 
-  console.log(`==> ${result.message}`);
+  console.log(`==> ${result.message} 🚀`);
   console.log(`==> Token Available to 60 min`);
 
   console.log(`==> Setting the outputs...`);
