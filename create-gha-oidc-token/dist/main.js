@@ -37552,7 +37552,8 @@ async function assumeRole(params) {
   console.log(`==> Setting the outputs...`);
   (0, import_core.setSecret)(result.token);
   (0, import_core.setOutput)("token", result.token);
-  (0, import_core.setOutput)("app_slug", "");
+  (0, import_core.setOutput)("app_slug", result.github_username);
+  (0, import_core.setOutput)("app_commit", result.github_commitEmail);
 }
 var isIdTokenAvailable = () => {
   const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];

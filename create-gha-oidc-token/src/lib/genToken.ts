@@ -15,6 +15,7 @@ import type {
   GetTokenError,
   GetTokenParams,
   GetTokenPayload,
+  OIDCResponse,
   OIDCTokenResponse,
 } from "../types/genToken.d.ts";
 
@@ -52,7 +53,7 @@ export async function assumeRole(params: GetTokenParams) {
 
   const client = new HttpClient("github-app-token");
 
-  const respToken = await client.postJson<OIDCTokenResponse | GetTokenError>(
+  const respToken = await client.postJson<OIDCResponse | GetTokenError>(
     params.providerEndpoint,
     payload,
     headers,
@@ -65,7 +66,7 @@ export async function assumeRole(params: GetTokenParams) {
 
   debug(respToken.result);
 
-  const { result } = respToken;
+  const { result }: OIDCTokenResponse = respToken;
 
   console.log(`==> ${result.message}`);
   console.log(`==> Token Available to 60 min`);
@@ -74,7 +75,8 @@ export async function assumeRole(params: GetTokenParams) {
 
   setSecret(result.token);
   setOutput("token", result.token);
-  setOutput("app_slug", "");
+  setOutput("app_slug", result.github_username);
+  setOutput("app_commit", result.github_commitEmail);
 }
 
 const isIdTokenAvailable = (): boolean => {
