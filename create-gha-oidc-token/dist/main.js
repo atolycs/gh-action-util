@@ -37547,7 +37547,7 @@ async function assumeRole(params) {
   }
   (0, import_core.debug)(respToken.result);
   const { result } = respToken;
-  console.log(`==> ${result.message}`);
+  console.log(`==> ${result.message} \u{1F680}`);
   console.log(`==> Token Available to 60 min`);
   console.log(`==> Setting the outputs...`);
   (0, import_core.setSecret)(result.token);
